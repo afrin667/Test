@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Git</title>
+    <style>
+      /* CSS styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f8f8f8;
+      }
+
+      h1 {
+        color: #222;
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        color: #444;
+        font-size: 24px;
+        margin-top: 30px;
+      }
+
+      p {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .code {
+        background-color: #f1f1f1;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-family: Consolas, monospace;
+      }
+
+      .mb {
+        margin-bottom: 75px;
+      }
+    </style>
+  </head>
+  <body class="mb">
+    <h1>Learning Git 😊</h1>
+    <p>This an attempt to learn and practice git in a simple way.</p>
+    <br />
+    <h2>Step 1: Create a local repository.</h2>
+    <p>I created a simple html file (this). Added some content to it.</p>
+    <p>
+      Then I run this command from vscode terminal: <br />
+      <span class="code"># git init</span>
+    </p>
+    <br />
+    <h2>Step 2: Create a remote repository in Github and Push changes.</h2>
+    <p>
+      I then created a remote Github repo and added the file(s) to the remote
+      github repo. Over here, the local repository will keep track of the
+      changes in the remote branch (main).
+    </p>
+    <p>
+      <span class="code"># git add .</span>
+      <br />
+      <span class="code"># git commit -m "first commit"</span>
+      <br />
+      <span class="code"># git branch -M main</span>
+      <br />
+      <span class="code"
+        ># git remote add origin
+        https://github.com/afrin321/Practicing-Git.git</span
+      >
+      <br />
+      <span class="code"># git push -u origin main</span>
+    </p>
+    <br />
+    <h2>Step 3: Pull and Push changes.</h2>
+    <p>
+      Next, I added a readme.md file from the remote github repository. This
+      created a change in the remote and local repository. Now I first pull the
+      change from the remote repo. By this time, I have also made some changes,
+      so now I will push these changes into remote repo.
+    </p>
+    <p>
+      <span class="code"># git pull origin main</span> <br />
+      <span class="code"># git add . </span> <br />
+      <span class="code"># git commit -m "updated html file" </span> <br />
+      <span class="code"># git push origin main</span> <br />
+    </p>
+    <br />
+    <h2>Step 4: Create a new branch</h2>
+    <p>
+      Now, I want to test some styling with html page. For this I create a new
+      branch. First, I created a new brach called dev-styles and then moved to
+      that branch with the checkout command. Then, I added the styles and pushed
+      changes to the new branch.
+    </p>
+    <p>
+      <span class="code"># git branch dev-styles</span> <br />
+      <span class="code"># git checkout dev-styles</span> <br />
+      <span class="code"># git add . </span> <br />
+      <span class="code"># git commit -m "added styles"</span> <br />
+      <span class="code"># git push origin dev-styles</span> <br />
+    </p>
+    <br />
+    <h2>Step 5: Merge changes</h2>
+    <p>
+      Once the new branch dev-styles is created and I am happy with the changes,
+      I want to merge the changes of both branches into the 'main' branch. Here
+      we will see how to merge changes and in the next step we will see how to
+      deal with "merge conflicts".
+    </p>
+    <p>
+      To merge changes, we need to need to be in the branch we want to merge
+      changes into. However, we must push any changes from the current branch
+      before checkout so that the changes are not lost.
+    </p>
+    <p>
+      <span class="code"># git add . </span> <br />
+      <span class="code"># git commit -m "updated html - step 5"</span> <br />
+      <span class="code"># git push origin dev-styles</span> <br /><br />
+      <span class="code"># git checkout main </span> <br />
+      <span class="code"># git push origin main</span> <br />
+    </p>
+    <br />
+    <h2>Step 6: Resolve conflicts</h2>
+    <p>
+      To create a conflict, I will create add a style to both branches but the
+      same line will be different in each. After push changes in both branches,
+      I will try to merge branch dev-styles into main.
+    </p>
+    <p>
+      I will set the class .mb 's margin-bottom as 100px in main and 50px in
+      dev-styles. After getting the conflict, I manually changed the value to
+      75px in main branch. Committed the changes, tested and pushed to main
+      branch.
+    </p>
+    <p>
+      <span class="code"># git add . </span> <br />
+      <span class="code"># git commit -m "added .mb - 100px"</span> <br />
+      <span class="code"># git push origin main</span> <br /><br />
+      <span class="code"># git checkout dev-styles </span> <br />
+      <span class="code"># git add . </span> <br />
+      <span class="code"># git commit -m "added .mb - 50px"</span> <br />
+      <span class="code"># git push origin dev-styles</span> <br /><br />
+      <span class="code"># git checkout main</span> <br />
+      <span class="code"># git add . </span> <br />
+      <span class="code"># git commit -m "Resolve merge conflict"</span> <br />
+      <span class="code"># git push origin main</span> <br />
+    </p>
+    <br />
+    <h2>Step 7: Revert changes</h2>
+    <p>
+      Next we will see how to go back to our previous stage aka undo/revert
+      changes. Now, let's undo the changes from the previous merge and go back
+      to margin-bottom of 100px
+    </p>
+    <p>
+      The commit-hash of the chosen version is
+      e976b315e11b10de7efe124e34999b4536f86b91.
+    </p>
+    <p>
+      <span class="code"
+        ># git revert e976b315e11b10de7efe124e34999b4536f86b91</span
+      >
+
+      <br />
+    </p>
+    <p>
+      Faced a merge conflict when resolving and then manually merged the files
+      and commited changes.
+    </p>
+    <br />
+    <script>
+      // JavaScript code (if needed)
+      console.log("Hello, Git! 😄");
+    </script>
+  </body>
+</html>
